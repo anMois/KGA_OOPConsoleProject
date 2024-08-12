@@ -10,7 +10,6 @@ namespace TextRPG
     {
         private int level;
         private float curExp;
-        private float maxExp;
         private int curHp;
         private int maxHp;
         private int strength;
@@ -20,12 +19,23 @@ namespace TextRPG
 
         public int Level { get { return level; } set { level = value; } }
         public float CurExp { get { return curExp; } set { curExp = value; } }
-        public float MaxExp { get {return maxExp; } set { maxExp = value; } }
         public int CurHp { get { return curHp; } set { curHp = value; } }
         public int MaxHp { get {return maxHp; } set {maxHp = value; } }
         public int STR { get { return strength; } set { strength = value; } }
         public int DEX { get { return dexterity; } set { dexterity = value; } }
         public int INT { get { return intelligence; } set { intelligence = value; } }
         public int LIK { get { return luck; } set { luck = value; } }
+
+        public State()
+        {
+            level = 1;
+            curExp = 0;
+            curHp = maxHp;
+            maxHp = 10;
+            strength = 4;
+            dexterity = 4;
+            intelligence = 4;
+            luck = 4;
+        }
     }
 }
