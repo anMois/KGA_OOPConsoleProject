@@ -32,12 +32,15 @@ namespace TextRPG.Scenes
         public override void Render()
         {
             Console.Clear();
-
+            Console.Write("캐릭터 이름을 정하시오. : ");
         }
 
         public override void Update()
         {
-            
+            if (input == string.Empty)
+                return;
+
+            game.ChangeScene(SceneType.Confirm);
         }
     }
 }
