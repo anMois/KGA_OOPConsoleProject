@@ -24,7 +24,7 @@ namespace TextRPG
         public int STR { get { return strength; } set { strength = value; } }
         public int DEX { get { return dexterity; } set { dexterity = value; } }
         public int INT { get { return intelligence; } set { intelligence = value; } }
-        public int LIK { get { return luck; } set { luck = value; } }
+        public int LUK { get { return luck; } set { luck = value; } }
 
         public State()
         {
@@ -36,6 +36,16 @@ namespace TextRPG
             dexterity = 4;
             intelligence = 4;
             luck = 4;
+        }
+
+        public void RandomGetStets()
+        {
+            Random random = new Random();
+
+            STR = random.Next(4, 13);
+            DEX = random.Next(4, 13);
+            INT = random.Next(4, 13);
+            LUK = random.Next(4, 13);
         }
     }
 }
