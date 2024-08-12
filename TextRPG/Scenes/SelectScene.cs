@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using TextRPG.Players;
 
 namespace TextRPG.Scenes
 {
@@ -16,12 +12,10 @@ namespace TextRPG.Scenes
 
         public override void Enter()
         {
-            
         }
 
         public override void Exit()
         {
-            
         }
 
         public override void Input()
@@ -40,6 +34,7 @@ namespace TextRPG.Scenes
             if (input == string.Empty)
                 return;
 
+            game.Player = new Player(input);
             game.ChangeScene(SceneType.Confirm);
         }
     }

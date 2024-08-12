@@ -40,7 +40,7 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
-            game.ChangeScene(TextRPG.SceneType.Select);
+            game.ChangeScene(SceneType.Select);
         }
     }
 }

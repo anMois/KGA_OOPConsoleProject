@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.Players;
 using TextRPG.Scenes;
 
 namespace TextRPG
@@ -45,8 +46,8 @@ namespace TextRPG
             isRuning = true;
 
             scenes[(int)SceneType.Title] = new TitleScene(this);
-            scenes[(int)SceneType.Select] = new TitleScene(this);
-            scenes[(int)SceneType.Confirm] = new TitleScene(this);
+            scenes[(int)SceneType.Select] = new SelectScene(this);
+            scenes[(int)SceneType.Confirm] = new ConfirmScene(this);
             scenes[(int)SceneType.Intro] = new TitleScene(this);
             scenes[(int)SceneType.Street] = new TitleScene(this);
             scenes[(int)SceneType.Inn] = new TitleScene(this);

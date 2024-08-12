@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG
+namespace TextRPG.Players
 {
     public class State
     {
@@ -20,7 +20,7 @@ namespace TextRPG
         public int Level { get { return level; } set { level = value; } }
         public float CurExp { get { return curExp; } set { curExp = value; } }
         public int CurHp { get { return curHp; } set { curHp = value; } }
-        public int MaxHp { get {return maxHp; } set {maxHp = value; } }
+        public int MaxHp { get { return maxHp; } set { maxHp = value; } }
         public int STR { get { return strength; } set { strength = value; } }
         public int DEX { get { return dexterity; } set { dexterity = value; } }
         public int INT { get { return intelligence; } set { intelligence = value; } }
@@ -42,10 +42,10 @@ namespace TextRPG
         {
             Random random = new Random();
 
-            STR = random.Next(4, 13);
-            DEX = random.Next(4, 13);
-            INT = random.Next(4, 13);
-            LUK = random.Next(4, 13);
+            strength = random.Next(4, 13);
+            dexterity = random.Next(4, 13);
+            intelligence = random.Next(4, 13);
+            luck = random.Next(4, 13);
         }
     }
 }
