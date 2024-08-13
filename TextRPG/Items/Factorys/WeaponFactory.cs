@@ -5,13 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG.Items;
 
-namespace TextRPG
+namespace TextRPG.Items.Factorys
 {
     public class WeaponFactory
     {
         public static Item Create(string name)
         {
-            if(name == "검")
+            if (name == "검")
             {
                 Weapon sword = new Weapon();
                 sword.Name = name;

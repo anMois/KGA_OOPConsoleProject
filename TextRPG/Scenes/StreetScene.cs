@@ -10,7 +10,7 @@ namespace TextRPG.Scenes
     public class StreetScene : Scene
     {
         private char[,] map;
-        private Point point;
+        private Point playerPos;
 
         public StreetScene(Game game) : base(game)
         {
@@ -20,11 +20,14 @@ namespace TextRPG.Scenes
                     { ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
                     { 'f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f'}
                 };
+            playerPos = new Point(0, 1);
+
 
         }
 
         public override void Enter()
-        {            
+        {
+            Console.CursorVisible = false;
         }
 
         public override void Exit()
@@ -40,6 +43,7 @@ namespace TextRPG.Scenes
         {
             PrintMap();
             PrintPlayerSimpleInfo();
+            PrintPlayer();
         }
 
         private void PrintMap()
@@ -64,10 +68,17 @@ namespace TextRPG.Scenes
 
         private void PrintPlayerSimpleInfo()
         {
-            Console.WriteLine($" Lv.{game.Player.State.Level.ToString("D2")}  {game.Player.Name}");
-            Console.WriteLine($"{game.Player.State.CurHp} / {game.Player.State.MaxHp}\t" +
-                $"{game.Player.State.CurExp} / {game.Player.MaxExp[game.Player.State.Level - 1]}");
-                
+            Console.WriteLine($"Lv.{game.Player.State.Level.ToString("D2")}  {game.Player.Name}");
+            Console.WriteLine($"HP {game.Player.State.CurHp,+4} / {game.Player.State.MaxHp,-4}");
+            Console.WriteLine($"Exp {game.Player.State.CurExp,+3} / {game.Player.MaxExp[game.Player.State.Level - 1],-3}");
+        }
+
+        private void PrintPlayer()
+        {
+            Console.SetCursorPosition(playerPos.X, playerPos.Y);
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("p");
+            Console.ResetColor();
         }
 
         public override void Update()

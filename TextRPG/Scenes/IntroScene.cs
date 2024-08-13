@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG.Items;
+using TextRPG.Items.Factorys;
 
 namespace TextRPG.Scenes
 {
