@@ -4,12 +4,17 @@
     {
         private string name;
         private int gold;
+        private int attack;
+        private int defense;
         private Job job;
         private State state;
         private int[] maxExp;
 
+
         public string Name { get { return name; } set { name = value; } }
         public int Gold { get { return gold; } set { gold = value; } }
+        public int Atk { get { return attack; } set { attack = value; } }
+        public int Def { get { return defense; } set { defense = value; } }
         public Job Job { get { return job; } set { job = value; } }
         public State State { get { return state; } set { state = value; } }
         public int[] MaxExp { get { return maxExp; } set { maxExp = value; } }
@@ -20,37 +25,42 @@
             gold = 100;
             job = Job.Beginner;
             state = new State();
+            attack = state.STR * 2;
+            defense = 1 * (state.DEX + state.LUK);
             maxExp = GetMaxExps();
         }
 
+        //레벨별 최대 경험치
         public int[] GetMaxExps()
         {
-            MaxExp = new int[10];
+            maxExp = new int[10];
 
-            for (int i = 0; i < MaxExp.Length; i++)
+            for (int i = 0; i < maxExp.Length; i++)
             {
                 if (i == 0)
-                    MaxExp[i] = 3;
+                    maxExp[i] = 3;
                 else if (i == 1)
-                    MaxExp[i] = 6;
+                    maxExp[i] = 6;
                 else
-                    MaxExp[i] = MaxExp[i - 1] + MaxExp[i - 2];
+                    maxExp[i] = maxExp[i - 1] + maxExp[i - 2];
             }
 
-            return MaxExp;
+            return maxExp;
         }
 
         public void ShowInfo()
         {
             Console.WriteLine("========캐릭터 상태창========");
-            Console.WriteLine($"이름 : {name,8}");
-            Console.WriteLine($"직업 : {job,8}");
-            Console.WriteLine($"레벨 : {state.Level,8}");
-            Console.WriteLine($"경험치 : {state.CurExp,6}");
-            Console.WriteLine($"체력 : {state.MaxHp,8}");
+            Console.WriteLine($"Lv. {state.Level.ToString("D2")} |  {name} | {job}\n");
+            Console.WriteLine($"체력 : {state.CurHp,6} | {state.MaxHp}");
+            Console.WriteLine($"경험치 : {state.CurExp,4} | {maxExp[state.Level - 1]}");
+            Console.WriteLine($"공격력 : {Atk,4}");
+            Console.WriteLine($"방어력 : {Def,4}");
+            Console.WriteLine("\n능력치");
+            Console.WriteLine("─────────────────────────────");
             Console.WriteLine($"근력 : {state.STR,2} | 민첩 : {state.DEX,2}");
             Console.WriteLine($"지력 : {state.INT,2} | 행운 : {state.LUK,2}");
-            Console.WriteLine($"소지 골드 : {gold} G");
+            Console.WriteLine($"\n소지 골드 : {gold} G");
             Console.WriteLine("=============================\n");
         }
     }

@@ -9,7 +9,7 @@ namespace TextRPG.Players
     public class State
     {
         private int level;
-        private float curExp;
+        private int curExp;
         private int curHp;
         private int maxHp;
         private int strength;
@@ -18,7 +18,7 @@ namespace TextRPG.Players
         private int luck;
 
         public int Level { get { return level; } set { level = value; } }
-        public float CurExp { get { return curExp; } set { curExp = value; } }
+        public int CurExp { get { return curExp; } set { curExp = value; } }
         public int CurHp { get { return curHp; } set { curHp = value; } }
         public int MaxHp { get { return maxHp; } set { maxHp = value; } }
         public int STR { get { return strength; } set { strength = value; } }
@@ -30,15 +30,15 @@ namespace TextRPG.Players
         {
             level = 1;
             curExp = 0;
-            curHp = maxHp;
             maxHp = 10;
+            curHp = maxHp;
             strength = 4;
             dexterity = 4;
             intelligence = 4;
             luck = 4;
         }
 
-        public void RandomGetStets()
+        public void RandomGetStats()
         {
             Random random = new Random();
 

@@ -16,7 +16,7 @@ namespace TextRPG.Scenes
 
         public override void Enter()
         {
-            game.Player.State.RandomGetStets();
+            game.Player.State.RandomGetStats();
         }
 
         public override void Exit()
@@ -28,7 +28,7 @@ namespace TextRPG.Scenes
         {
             Console.WriteLine("캐릭터의 스텟이 정해지는 중입니다...");
             Console.WriteLine("(주사위가 굴러가는 소리...) 데굴... 데굴...\n");
-            Thread.Sleep(3000);
+            Thread.Sleep(2000);
 
             game.Player.ShowInfo();
 

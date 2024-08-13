@@ -20,6 +20,16 @@ namespace TextRPG
         private Player player;
         public Player Player { get { return player; } set { player = value; } }
 
+        #region 싱글톤
+        public static Game instance { get; private set; }
+
+        static Game()
+        {
+            instance = new Game();
+        }
+        private Game() { }
+        #endregion
+
         public void Run()
         {
             Start();
