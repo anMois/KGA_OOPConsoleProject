@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.Interfaces;
+using TextRPG.Players;
 using TextRPG.Scenes;
 
 namespace TextRPG
 {
-    public class GameObject
+    public class GameObject 
     {
         public Game game;
         public Scene scene;
