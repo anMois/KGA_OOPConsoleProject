@@ -6,19 +6,17 @@ namespace TextRPG.Players
     {
         private string name;
         private int gold;
-        private int attack;
-        private int defense;
         private int[] maxExp;
         private Job job;
         private State state;
+        private Inventory inventory;
 
         public string Name { get { return name; } set { name = value; } }
         public int Gold { get { return gold; } set { gold = value; } }
-        public int Atk { get { return attack; } set { attack = value; } }
-        public int Def { get { return defense; } set { defense = value; } }
         public int[] MaxExp { get { return maxExp; } set { maxExp = value; } }
         public Job Job { get { return job; } set { job = value; } }
         public State State { get { return state; } set { state = value; } }
+        public Inventory Inventory { get { return inventory; } set { inventory = value; } }
 
         public Player(string name)
         {
@@ -26,9 +24,8 @@ namespace TextRPG.Players
             gold = 100;
             job = Job.Beginner;
             state = new State();
-            attack = state.STR * 2;
-            defense = 1 * (state.DEX + state.LUK);
             maxExp = GetMaxExps();
+            inventory = new Inventory();
         }
 
         //레벨별 최대 경험치
@@ -55,8 +52,8 @@ namespace TextRPG.Players
             Console.WriteLine($"Lv. {state.Level.ToString("D2")} |  {name} | {job}\n");
             Console.WriteLine($"체력 : {state.CurHp,6} | {state.MaxHp}");
             Console.WriteLine($"경험치 : {state.CurExp,4} | {maxExp[state.Level - 1]}");
-            Console.WriteLine($"공격력 : {Atk,4}");
-            Console.WriteLine($"방어력 : {Def,4}");
+            Console.WriteLine($"공격력 : {state.Atk,4}");
+            Console.WriteLine($"방어력 : {state.Def,4}");
             Console.WriteLine($"소지 골드 : {gold} G");
             Console.WriteLine("\n능력치");
             Console.WriteLine("─────────────────────────────");

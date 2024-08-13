@@ -16,12 +16,11 @@ namespace TextRPG.Scenes
 
         public override void Enter()
         {
-            game.Player.State.RandomGetStats();
+            game.Player.State.GetStats();
         }
 
         public override void Exit()
         {
-            
         }
 
         public override void Render()

@@ -58,7 +58,7 @@ namespace TextRPG
             scenes[(int)SceneType.Title] = new TitleScene(this);
             scenes[(int)SceneType.Select] = new SelectScene(this);
             scenes[(int)SceneType.Confirm] = new ConfirmScene(this);
-            scenes[(int)SceneType.Intro] = new TitleScene(this);
+            scenes[(int)SceneType.Intro] = new IntroScene(this);
             scenes[(int)SceneType.Street] = new TitleScene(this);
             scenes[(int)SceneType.Inn] = new TitleScene(this);
             scenes[(int)SceneType.Store] = new TitleScene(this);

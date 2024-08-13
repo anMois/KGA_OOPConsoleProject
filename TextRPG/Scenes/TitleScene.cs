@@ -35,7 +35,7 @@ namespace TextRPG.Scenes
             Console.WriteLine("│              │");
             Console.WriteLine("└──────────────┘");
             Console.WriteLine();
-            Console.WriteLine(" 계속하려면 아무키나 누르세요 ");
+            Console.Write(" 계속하려면 아무키나 누르세요. ");
         }
 
         public override void Update()
