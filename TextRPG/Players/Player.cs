@@ -1,4 +1,6 @@
-﻿namespace TextRPG.Players
+﻿using TextRPG.Items;
+
+namespace TextRPG.Players
 {
     public class Player
     {
@@ -6,17 +8,17 @@
         private int gold;
         private int attack;
         private int defense;
+        private int[] maxExp;
         private Job job;
         private State state;
-        private int[] maxExp;
 
         public string Name { get { return name; } set { name = value; } }
         public int Gold { get { return gold; } set { gold = value; } }
         public int Atk { get { return attack; } set { attack = value; } }
         public int Def { get { return defense; } set { defense = value; } }
+        public int[] MaxExp { get { return maxExp; } set { maxExp = value; } }
         public Job Job { get { return job; } set { job = value; } }
         public State State { get { return state; } set { state = value; } }
-        public int[] MaxExp { get { return maxExp; } set { maxExp = value; } }
 
         public Player(string name)
         {

@@ -18,19 +18,27 @@ namespace TextRPG.Scenes
 
         public override void Exit()
         {
+
         }
 
         public override void Input()
         {
+            Console.ReadLine();
         }
 
         public override void Render()
         {
-
+            Console.WriteLine("당신은 거대한 단풍나무 아래에서 눈이 떠졌습니다.");
+            Console.WriteLine("단풍나무는 거대한 언덕 위에 있었습니다.");
+            Console.WriteLine("눈이 떠진 당신은 일어나서 주위를 둘러봅니다.");
+            Console.WriteLine("주위를 둘러보니 멀리 마을 하나가 보입니다.");
+            Console.WriteLine("확인한 당신은 나무에 걸쳐있는 무기를 챙깁니다.");
+            Console.WriteLine("당신은 언덕에서 내려와 아까 보였던 마을을 향해 걸어갑니다.");
         }
 
         public override void Update()
         {
+            game.ChangeScene(SceneType.Street);
         }
     }
 }

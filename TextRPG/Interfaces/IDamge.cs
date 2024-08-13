@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG
+namespace TextRPG.Interfaces
 {
-    internal class Item
+    public interface IDamge
     {
+        public void GetDamage(int damge);
     }
 }
