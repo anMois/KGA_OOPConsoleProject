@@ -29,7 +29,7 @@ namespace TextRPG.Players
         }
 
         //레벨별 최대 경험치
-        public int[] GetMaxExps()
+        private int[] GetMaxExps()
         {
             maxExp = new int[10];
 

@@ -26,7 +26,7 @@ namespace TextRPG.Scenes
         public override void Input()
         {
             Console.Write("\n 계속하려면 아무키나 누르세요.");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         public override void Render()
