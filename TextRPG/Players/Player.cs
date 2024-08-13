@@ -10,7 +10,6 @@
         private State state;
         private int[] maxExp;
 
-
         public string Name { get { return name; } set { name = value; } }
         public int Gold { get { return gold; } set { gold = value; } }
         public int Atk { get { return attack; } set { attack = value; } }
@@ -56,11 +55,11 @@
             Console.WriteLine($"경험치 : {state.CurExp,4} | {maxExp[state.Level - 1]}");
             Console.WriteLine($"공격력 : {Atk,4}");
             Console.WriteLine($"방어력 : {Def,4}");
+            Console.WriteLine($"소지 골드 : {gold} G");
             Console.WriteLine("\n능력치");
             Console.WriteLine("─────────────────────────────");
             Console.WriteLine($"근력 : {state.STR,2} | 민첩 : {state.DEX,2}");
             Console.WriteLine($"지력 : {state.INT,2} | 행운 : {state.LUK,2}");
-            Console.WriteLine($"\n소지 골드 : {gold} G");
             Console.WriteLine("=============================\n");
         }
     }
