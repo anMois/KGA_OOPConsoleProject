@@ -10,7 +10,7 @@ namespace TextRPG.GameObjects
 {
     public class Place : GameObject
     {
-        private SceneType type;
+        public SceneType type;
 
         public Place(Scene scene) : base(scene)
         {
@@ -18,8 +18,7 @@ namespace TextRPG.GameObjects
 
         public override void Interaction(Player player)
         {
-            Console.WriteLine("충돌");
-            //game.ChangeScene(type);
+            game.ChangeScene(type);
         }
     }
 }

@@ -51,6 +51,11 @@ namespace TextRPG
             curScene.Enter();
         }
 
+        public void StartBattle()
+        {
+
+        }
+
         private void Start()
         {
             isRuning = true;
@@ -60,9 +65,8 @@ namespace TextRPG
             scenes[(int)SceneType.Confirm] = new ConfirmScene(this);
             scenes[(int)SceneType.Intro] = new IntroScene(this);
             scenes[(int)SceneType.Street] = new StreetScene(this);
-            scenes[(int)SceneType.Inn] = new TitleScene(this);
             scenes[(int)SceneType.Store] = new TitleScene(this);
-            scenes[(int)SceneType.Amhurst] = new TitleScene(this);
+            scenes[(int)SceneType.Amhurst] = new VillageScene(this);
             scenes[(int)SceneType.SouthPerry] = new TitleScene(this);
             scenes[(int)SceneType.LithHarbor] = new TitleScene(this);
 

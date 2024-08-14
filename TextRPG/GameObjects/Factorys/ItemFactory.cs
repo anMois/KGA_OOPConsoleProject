@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG.GameObjects.Items;
 
-namespace TextRPG.GameObjects.Items.Factorys
+namespace TextRPG.GameObjects.Factorys
 {
-    public class WeaponFactory
+    public class ItemFactory
     {
-        public static Item Create(string name)
+        public static Weapon WeaponCreate(string name)
         {
             if (name == "검" || name == string.Empty)
             {

@@ -4,7 +4,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 using TextRPG.GameObjects;
+using TextRPG.GameObjects.Factorys;
+using TextRPG.GameObjects.Monsters;
 
 namespace TextRPG.Scenes
 {
@@ -12,9 +15,6 @@ namespace TextRPG.Scenes
     {
         private char[,] map;
         private Point playerPos;
-        private GameObject potal;
-        private GameObject bord;
-        private GameObject colliderObj;
 
         private List<GameObject> gameObjects;
 
@@ -31,18 +31,26 @@ namespace TextRPG.Scenes
             playerPos = new Point(0, 1);
             gameObjects = new List<GameObject>();
 
-            potal = new Place(this);
+            Place potal = new Place(this);
             potal.color = ConsoleColor.Cyan;
             potal.simbol = 't';
             potal.point = new Point(map.GetLength(1) - 1, 1);
+            potal.type = SceneType.Amhurst; 
 
-            bord = new Bord(this);
+            Bord bord = new Bord(this);
             bord.color = ConsoleColor.White;
             bord.simbol = 'b';
             bord.point = new Point(12, 1);
 
             gameObjects.Add(potal);
             gameObjects.Add(bord);
+
+            Monster snail = MonsterFactory.MonsterCreate(this, "달팽이", MonsterType.Animal);
+            snail.color = ConsoleColor.Red;
+            snail.simbol = 'm';
+            snail.point = new Point(8, 1);
+
+            gameObjects.Add(snail);
         }
 
         public override void Enter()

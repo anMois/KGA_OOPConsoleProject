@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.GameObjects.Factorys;
 using TextRPG.GameObjects.Items;
-using TextRPG.GameObjects.Items.Factorys;
 
 namespace TextRPG.Scenes
 {
@@ -20,7 +20,7 @@ namespace TextRPG.Scenes
 
         public override void Exit()
         {
-            Item sword = WeaponFactory.Create("검");
+            Item sword = ItemFactory.WeaponCreate("검");
             game.Player.Inventory.AddItem(sword);
         }
 
