@@ -43,6 +43,7 @@ namespace TextRPG.GameObjects.Monsters
         public override void Interaction(Player player)
         {
             //나 이녀석이랑 충돌했어 이거 할꺼야
+            game.StartBattle(this);
         }
     }
 }

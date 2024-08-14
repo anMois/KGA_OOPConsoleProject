@@ -7,6 +7,7 @@
         Confirm,
         Intro,
         Street,
+        Battle,
         Store,
         Amhurst,
         SouthPerry,

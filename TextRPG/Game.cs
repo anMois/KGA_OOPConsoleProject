@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.GameObjects.Monsters;
 using TextRPG.Players;
 using TextRPG.Scenes;
 
@@ -15,20 +16,12 @@ namespace TextRPG
 
         private Scene[] scenes = new Scene[(int)SceneType.SIZE];
         private Scene curScene;
+        private Scene prevScene;
+
         public Scene CurScene { get { return curScene; } }
 
         private Player player;
         public Player Player { get { return player; } set { player = value; } }
-
-        #region 싱글톤
-        public static Game instance { get; private set; }
-
-        static Game()
-        {
-            instance = new Game();
-        }
-        private Game() { }
-        #endregion
 
         public void Run()
         {
@@ -51,8 +44,11 @@ namespace TextRPG
             curScene.Enter();
         }
 
-        public void StartBattle()
+        public void StartBattle(Monster monster)
         {
+            prevScene = curScene;
+            curScene.Exit();
+            curScene = scenes[(int)SceneType.Battle];
 
         }
 
@@ -65,6 +61,7 @@ namespace TextRPG
             scenes[(int)SceneType.Confirm] = new ConfirmScene(this);
             scenes[(int)SceneType.Intro] = new IntroScene(this);
             scenes[(int)SceneType.Street] = new StreetScene(this);
+            scenes[(int)SceneType.Battle] = new StreetScene(this);
             scenes[(int)SceneType.Store] = new TitleScene(this);
             scenes[(int)SceneType.Amhurst] = new VillageScene(this);
             scenes[(int)SceneType.SouthPerry] = new TitleScene(this);
