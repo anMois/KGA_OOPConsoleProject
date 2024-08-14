@@ -1,6 +1,4 @@
-﻿using TextRPG.Items;
-
-namespace TextRPG.Players
+﻿namespace TextRPG.Players
 {
     public class Player
     {

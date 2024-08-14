@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TextRPG.Items;
+using TextRPG.GameObjects.Items;
 
-namespace TextRPG.Items.Factorys
+namespace TextRPG.GameObjects.Items.Factorys
 {
     public class WeaponFactory
     {
         public static Item Create(string name)
         {
-            if (name == "검")
+            if (name == "검" || name == string.Empty)
             {
                 Weapon sword = new Weapon();
                 sword.Name = name;

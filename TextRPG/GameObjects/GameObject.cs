@@ -7,9 +7,9 @@ using TextRPG.Interfaces;
 using TextRPG.Players;
 using TextRPG.Scenes;
 
-namespace TextRPG
+namespace TextRPG.GameObjects
 {
-    public class GameObject 
+    public class GameObject
     {
         public Game game;
         public Scene scene;

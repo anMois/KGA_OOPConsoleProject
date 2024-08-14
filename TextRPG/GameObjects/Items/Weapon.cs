@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG.Interfaces;
 
-namespace TextRPG.Items
+namespace TextRPG.GameObjects.Items
 {
     public class Weapon : Item
     {

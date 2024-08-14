@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TextRPG.Items
+namespace TextRPG.GameObjects.Items
 {
     public abstract class Item
     {
