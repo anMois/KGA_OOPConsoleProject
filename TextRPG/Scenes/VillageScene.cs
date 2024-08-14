@@ -8,33 +8,65 @@ namespace TextRPG.Scenes
 {
     public class VillageScene : Scene
     {
+        private char[,] map;
+
         public VillageScene(Game game) : base(game)
         {
+            map = new char[,]
+                {
+                    { 's','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s','s'},
+                    { ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' '},
+                    { ' ',' ',' ',' ',' ',' ',' ','f','f','f','f','f','h','f','f','f',' ',' ',' ',' '},
+                    { ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','h',' ',' ',' ',' ',' ',' ',' '},
+                    { ' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','h',' ',' ',' ',' ',' ',' ',' '},
+                    { 'f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f'}
+                };
         }
 
         public override void Enter()
         {
-            throw new NotImplementedException();
         }
 
         public override void Exit()
         {
-            throw new NotImplementedException();
         }
 
         public override void Input()
         {
-            throw new NotImplementedException();
+            Console.ReadKey();
         }
 
         public override void Render()
         {
-            throw new NotImplementedException();
+            PrintMap();
+        }
+
+        private void PrintMap()
+        {
+            Console.Clear();
+            for (int y = 0; y < map.GetLength(0); y++)
+            {
+                for (int x = 0; x < map.GetLength(1); x++)
+                {
+                    if (map[y, x] == 's' || map[y, x] == ' ')
+                    {
+                        Console.Write(" ");
+                    }
+                    else if (map[y, x] == 'f')
+                    {
+                        Console.Write("-");
+                    }
+                    else if (map[y,x] == 'h')
+                    {
+                        Console.Write("H");
+                    }
+                }
+                Console.WriteLine();
+            }
         }
 
         public override void Update()
         {
-            throw new NotImplementedException();
         }
     }
 }
