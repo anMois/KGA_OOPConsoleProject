@@ -69,6 +69,7 @@ namespace TextRPG.Scenes
 
         public override void Render()
         {
+            Console.Clear();
             PrintMap();
             PrintObject();
             PrintPlayer();
@@ -77,7 +78,6 @@ namespace TextRPG.Scenes
 
         private void PrintMap()
         {
-            Console.Clear();
             for (int y = 0; y < map.GetLength(0); y++)
             {
                 for(int x = 0; x < map.GetLength(1); x++)
@@ -166,7 +166,11 @@ namespace TextRPG.Scenes
                 {
                     obj.Interaction(game.Player);
 
-                    //return;
+                    if(obj.removeWhenInteract)
+                    {
+                        gameObjects.Remove(obj);
+                    }
+                    return;
                 }
             }
         }

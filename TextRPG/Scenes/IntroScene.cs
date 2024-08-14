@@ -21,6 +21,7 @@ namespace TextRPG.Scenes
         public override void Exit()
         {
             Item sword = ItemFactory.WeaponCreate("검");
+            game.Player.Weapon = (Weapon)sword;
             game.Player.Inventory.AddItem(sword);
         }
 

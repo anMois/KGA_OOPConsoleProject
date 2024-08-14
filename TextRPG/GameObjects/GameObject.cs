@@ -17,6 +17,7 @@ namespace TextRPG.GameObjects
         public ConsoleColor color;
         public Point point;
         public char simbol;
+        public bool removeWhenInteract;
 
         public GameObject(Scene scene)
         {

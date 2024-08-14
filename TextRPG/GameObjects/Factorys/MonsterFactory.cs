@@ -18,7 +18,7 @@ namespace TextRPG.GameObjects.Factorys
                 snail.Name = name;
                 snail.MonsterType = type;
                 snail.Level = 1;
-                snail.HP = 15;
+                snail.HP = 100;
                 snail.Exp = 3;
                 snail.Gold = 10;
                 snail.Atk = 2;

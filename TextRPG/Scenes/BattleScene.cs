@@ -14,6 +14,7 @@ namespace TextRPG.Scenes
         private Monster monster;
 
         private string input;
+        private int damge;
 
         public BattleScene(Game game) : base(game)
         {
@@ -29,6 +30,7 @@ namespace TextRPG.Scenes
         {
             Console.Clear();
             Console.CursorVisible = true;
+            damge = player.State.Atk + player.Weapon.AtkDamage;
         }
 
         public override void Exit()
@@ -42,6 +44,7 @@ namespace TextRPG.Scenes
 
         public override void Render()
         {
+            Console.Clear();
             PrintMonsterInfo();
             Console.WriteLine("\n");
             PrintPlayerInfo();
@@ -59,7 +62,7 @@ namespace TextRPG.Scenes
         {
             Console.WriteLine("─────────────────────────────────────────────────");
             Console.WriteLine($"Lv.{player.State.Level.ToString("D2")}   {player.Name}");
-            Console.WriteLine($"HP {player.State.CurHp} / {player.State.MaxHp}");
+            Console.WriteLine($"HP {player.State.CurHp} / {player.State.MaxHp} ");
         }
 
         private void PrintBattleMenu()
@@ -72,6 +75,59 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
+            //플레이어 턴
+            switch (input)
+            {
+                case "1":
+                    Attack(monster);
+                    break;
+                case "2":
+                    Defence();
+                    break;
+                case "3":
+                    Run();
+                    break;
+                default:
+                    break;
+            }
+
+            //몬스터 턴
+            Random rand = new Random();
+
+            switch (rand.Next(0, 2))
+            {
+                case 0:
+                    Attack(player);
+                    break;
+                case 1:
+                    break;
+            }
+
+            //서로의 턴이 끝난 후
+            if (monster.HP < 0)
+            {
+                player.Gold += monster.Gold;
+                player.State.CurExp += monster.Exp;
+                game.ReturnScene();
+            }
+        }
+
+        private void Attack<T>(T obj)
+        {
+            if (obj is Monster)
+                monster.GetDamage((damge - monster.Def) < 0 ? 0 : damge - monster.Def);
+            else if (obj is Player)
+                player.GetDamage((monster.Atk - player.State.Def) < 0 ? 0 : monster.Atk - player.State.Def);
+        }
+
+        private void Defence()
+        {
+
+        }
+
+        private void Run()
+        {
+            
         }
     }
 }

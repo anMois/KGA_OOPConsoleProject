@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TextRPG.GameObjects.Items;
 
-namespace TextRPG
+namespace TextRPG.GameObjects
 {
     public class Inventory
     {

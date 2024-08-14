@@ -1,12 +1,17 @@
-﻿namespace TextRPG.Players
+﻿using TextRPG.GameObjects;
+using TextRPG.GameObjects.Items;
+using TextRPG.Interfaces;
+
+namespace TextRPG.Players
 {
-    public class Player
+    public class Player : IDamgeable
     {
         private string name;
         private int gold;
         private int[] maxExp;
         private Job job;
         private State state;
+        private Weapon weapon;
         private Inventory inventory;
 
         public string Name { get { return name; } set { name = value; } }
@@ -14,6 +19,7 @@
         public int[] MaxExp { get { return maxExp; } set { maxExp = value; } }
         public Job Job { get { return job; } set { job = value; } }
         public State State { get { return state; } set { state = value; } }
+        public Weapon Weapon { get { return weapon; } set { weapon = value; } }
         public Inventory Inventory { get { return inventory; } set { inventory = value; } }
 
         public Player(string name)
@@ -58,6 +64,25 @@
             Console.WriteLine($"근력 : {state.STR,2} | 민첩 : {state.DEX,2}");
             Console.WriteLine($"지력 : {state.INT,2} | 행운 : {state.LUK,2}");
             Console.WriteLine("=============================\n");
+        }
+
+        public void GetDamage(int damge)
+        {
+            if (damge > 0)
+            {
+                Console.WriteLine($"플레이어 {damge}의 피해를 입었습니다.");
+            }
+            else
+            {
+                Console.WriteLine("플레이어가 피해를 입지 않았습니다.");
+            }
+
+            if((state.CurHp - damge) < 0)
+            {
+                Console.WriteLine("플레이어가 죽었습니다.");
+            }
+
+            Thread.Sleep(1000);
         }
     }
 }

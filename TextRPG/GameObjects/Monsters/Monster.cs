@@ -43,14 +43,16 @@ namespace TextRPG.GameObjects.Monsters
 
         public void GetDamage(int damge)
         {
-            Console.WriteLine($"{name}은(는) {damge}의 피해를 입었다.");
-            if((hp -= damge) > 0)
+            if(damge > 0)
+                Console.WriteLine($"{name}은(는) {damge}의 피해를 입었다.");
+
+            if((hp -= damge) < 0)
             {
+                removeWhenInteract = true;
                 Console.WriteLine($"{name} 죽였다.");
                 Console.WriteLine($"플레이어는 {exp}경험치와 {gold}를 획득했다.");
             }
-
-            this.hp -= damge;
+            Thread.Sleep(1000);
         }
 
         public override void Interaction(Player player)
