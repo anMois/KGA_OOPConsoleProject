@@ -26,10 +26,10 @@ namespace TextRPG.Scenes
                 };
             playerPos = new Point(0, 1);
 
-            potal = new GameObject(this);
-            potal.color = ConsoleColor.Cyan;
-            potal.simbol = 't';
-            potal.point = new Point(map.GetLength(1) - 1, 1);
+            //potal = new GameObject(this);
+            //potal.color = ConsoleColor.Cyan;
+            //potal.simbol = 't';
+            //potal.point = new Point(map.GetLength(1) - 1, 1);
         }
 
         public override void Enter()

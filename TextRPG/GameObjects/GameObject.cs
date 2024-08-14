@@ -9,7 +9,7 @@ using TextRPG.Scenes;
 
 namespace TextRPG.GameObjects
 {
-    public class GameObject
+    public abstract class GameObject : IInteractable
     {
         public Game game;
         public Scene scene;
@@ -23,5 +23,7 @@ namespace TextRPG.GameObjects
             this.game = scene.game;
             this.scene = scene;
         }
+
+        public abstract void Interaction(Player player);
     }
 }
