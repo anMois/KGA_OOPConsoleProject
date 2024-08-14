@@ -18,7 +18,8 @@ namespace TextRPG.GameObjects
 
         public override void Interaction(Player player)
         {
-            Console.WriteLine("전방에 마을이 있습니다");
+            Console.WriteLine("안내판");
+            Console.WriteLine("→ 암허스트");
             Thread.Sleep(1000);
         }
     }

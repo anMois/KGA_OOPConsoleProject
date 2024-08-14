@@ -23,6 +23,8 @@ namespace TextRPG
         private Player player;
         public Player Player { get { return player; } set { player = value; } }
 
+        Stack<Scene> aaa = new Stack<Scene>();
+
         public void Run()
         {
             Start();
@@ -44,12 +46,20 @@ namespace TextRPG
             curScene.Enter();
         }
 
+        public void ReturnScene()
+        {
+            curScene.Exit();
+            curScene = prevScene;
+            curScene.Enter();
+        }
+
         public void StartBattle(Monster monster)
         {
             prevScene = curScene;
             curScene.Exit();
             curScene = scenes[(int)SceneType.Battle];
-
+            ((BattleScene)curScene).SetBattle(player, monster);
+            curScene.Enter();
         }
 
         private void Start()
@@ -61,7 +71,7 @@ namespace TextRPG
             scenes[(int)SceneType.Confirm] = new ConfirmScene(this);
             scenes[(int)SceneType.Intro] = new IntroScene(this);
             scenes[(int)SceneType.Street] = new StreetScene(this);
-            scenes[(int)SceneType.Battle] = new StreetScene(this);
+            scenes[(int)SceneType.Battle] = new BattleScene(this);
             scenes[(int)SceneType.Store] = new TitleScene(this);
             scenes[(int)SceneType.Amhurst] = new VillageScene(this);
             scenes[(int)SceneType.SouthPerry] = new TitleScene(this);

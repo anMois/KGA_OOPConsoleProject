@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TextRPG.Interfaces
 {
-    public interface IDamge
+    public interface IDamgeable
     {
         public void GetDamage(int damge);
     }

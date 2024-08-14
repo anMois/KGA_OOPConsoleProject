@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.Interfaces;
 using TextRPG.Players;
 using TextRPG.Scenes;
 
 namespace TextRPG.GameObjects.Monsters
 {
-    public class Monster : GameObject
+    public class Monster : GameObject, IDamgeable
     {
         private string name;
         private int level;
@@ -39,6 +40,18 @@ namespace TextRPG.GameObjects.Monsters
         public int Exp { get { return exp; } set { exp = value; } }
         public int Gold { get { return gold; } set { gold = value; } }
         public MonsterType MonsterType { get { return type; } set { type = value; } }
+
+        public void GetDamage(int damge)
+        {
+            Console.WriteLine($"{name}은(는) {damge}의 피해를 입었다.");
+            if((hp -= damge) > 0)
+            {
+                Console.WriteLine($"{name} 죽였다.");
+                Console.WriteLine($"플레이어는 {exp}경험치와 {gold}를 획득했다.");
+            }
+
+            this.hp -= damge;
+        }
 
         public override void Interaction(Player player)
         {
