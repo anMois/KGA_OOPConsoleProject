@@ -8,18 +8,18 @@ using TextRPG.Scenes;
 
 namespace TextRPG.GameObjects
 {
-    public class Place : GameObject
+    public class Bord : GameObject
     {
-        private SceneType type;
+        private bool collider;
 
-        public Place(Scene scene) : base(scene)
+        public Bord(Scene scene) : base(scene)
         {
         }
 
         public override void Interaction(Player player)
         {
-            Console.WriteLine("충돌");
-            //game.ChangeScene(type);
+            Console.WriteLine("전방에 마을이 있습니다");
+            Thread.Sleep(1000);
         }
     }
 }

@@ -13,6 +13,10 @@ namespace TextRPG.Scenes
         private char[,] map;
         private Point playerPos;
         private GameObject potal;
+        private GameObject bord;
+        private GameObject colliderObj;
+
+        private List<GameObject> gameObjects;
 
         private ConsoleKey input;
 
@@ -25,11 +29,20 @@ namespace TextRPG.Scenes
                     { 'f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f','f'}
                 };
             playerPos = new Point(0, 1);
+            gameObjects = new List<GameObject>();
 
-            //potal = new GameObject(this);
-            //potal.color = ConsoleColor.Cyan;
-            //potal.simbol = 't';
-            //potal.point = new Point(map.GetLength(1) - 1, 1);
+            potal = new Place(this);
+            potal.color = ConsoleColor.Cyan;
+            potal.simbol = 't';
+            potal.point = new Point(map.GetLength(1) - 1, 1);
+
+            bord = new Bord(this);
+            bord.color = ConsoleColor.White;
+            bord.simbol = 'b';
+            bord.point = new Point(12, 1);
+
+            gameObjects.Add(potal);
+            gameObjects.Add(bord);
         }
 
         public override void Enter()
@@ -49,9 +62,9 @@ namespace TextRPG.Scenes
         public override void Render()
         {
             PrintMap();
-            PrintPlayerSimpleInfo();
             PrintObject();
             PrintPlayer();
+            PrintPlayerSimpleInfo();
         }
 
         private void PrintMap()
@@ -76,6 +89,7 @@ namespace TextRPG.Scenes
 
         private void PrintPlayerSimpleInfo()
         {
+            Console.SetCursorPosition(0, map.GetLength(0));
             Console.WriteLine($"Lv.{game.Player.State.Level.ToString("D2")}  {game.Player.Name}");
             Console.WriteLine($"HP {game.Player.State.CurHp,+4} / {game.Player.State.MaxHp,-4}");
             Console.WriteLine($"Exp {game.Player.State.CurExp,+3} / {game.Player.MaxExp[game.Player.State.Level - 1],-3}");
@@ -83,10 +97,13 @@ namespace TextRPG.Scenes
 
         private void PrintObject()
         {
-            Console.SetCursorPosition(potal.point.X, potal.point.Y);
-            Console.ForegroundColor = potal.color;
-            Console.WriteLine($"{potal.simbol}");
-            Console.ResetColor();
+            foreach (GameObject obj in gameObjects)
+            {
+                Console.SetCursorPosition(obj.point.X, obj.point.Y);
+                Console.ForegroundColor = obj.color;
+                Console.WriteLine($"{obj.simbol}");
+                Console.ResetColor();
+            }
         }
 
         private void PrintPlayer()
@@ -100,6 +117,7 @@ namespace TextRPG.Scenes
         public override void Update()
         {
             Move();
+            Interaction();
         }
 
         private void Move()
@@ -129,6 +147,19 @@ namespace TextRPG.Scenes
             if (map[next.Y, next.X] == ' ')
             {
                 playerPos = next;
+            }
+        }
+
+        private void Interaction()
+        {
+            foreach (GameObject obj in gameObjects)
+            {
+                if (playerPos.X == obj.point.X && playerPos.Y == obj.point.Y)
+                {
+                    obj.Interaction(game.Player);
+
+                    //return;
+                }
             }
         }
     }

@@ -40,6 +40,7 @@ namespace TextRPG.Scenes
             Console.WriteLine("확인한 당신은 나무에 걸쳐있는 무기를 챙깁니다.");
             Console.WriteLine("당신은 언덕에서 내려와 아까 보였던 마을을 향해 걸어갑니다.");
             Console.WriteLine("─────────────────────────────────────────────────────────");
+            Thread.Sleep(2000);
         }
 
         public override void Update()
