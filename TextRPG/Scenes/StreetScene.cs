@@ -107,6 +107,12 @@ namespace TextRPG.Scenes
         {
             foreach (GameObject obj in gameObjects)
             {
+                if (obj.removeWhenInteract)
+                {
+                    gameObjects.Remove(obj);
+                    return;
+                }
+
                 Console.SetCursorPosition(obj.point.X, obj.point.Y);
                 Console.ForegroundColor = obj.color;
                 Console.WriteLine($"{obj.simbol}");
@@ -164,12 +170,6 @@ namespace TextRPG.Scenes
             {
                 if (playerPos.X == obj.point.X && playerPos.Y == obj.point.Y)
                 {
-                    if(obj.removeWhenInteract)
-                    {
-                        gameObjects.Remove(obj);
-                        return;
-                    }
-
                     obj.Interaction(game.Player);
 
                     return;
