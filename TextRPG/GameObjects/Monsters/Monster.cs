@@ -46,9 +46,11 @@ namespace TextRPG.GameObjects.Monsters
             if(damge > 0)
                 Console.WriteLine($"{name}은(는) {damge}의 피해를 입었다.");
 
-            if((hp -= damge) < 0)
+            hp -= damge;
+
+            if(hp < 0)
             {
-                removeWhenInteract = true;
+                //base.removeWhenInteract = true;
                 Console.WriteLine($"{name} 죽였다.");
                 Console.WriteLine($"플레이어는 {exp}경험치와 {gold}를 획득했다.");
             }

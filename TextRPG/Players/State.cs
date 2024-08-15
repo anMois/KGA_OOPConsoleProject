@@ -50,7 +50,7 @@ namespace TextRPG.Players
             luck = random.Next(4, 13);
 
             attack = strength * 2;
-            defense = 1 * (dexterity + luck) / 2;
+            defense = (dexterity + luck) / 2;
         }
     }
 }

@@ -164,12 +164,14 @@ namespace TextRPG.Scenes
             {
                 if (playerPos.X == obj.point.X && playerPos.Y == obj.point.Y)
                 {
-                    obj.Interaction(game.Player);
-
                     if(obj.removeWhenInteract)
                     {
                         gameObjects.Remove(obj);
+                        return;
                     }
+
+                    obj.Interaction(game.Player);
+
                     return;
                 }
             }

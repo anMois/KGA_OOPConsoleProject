@@ -77,7 +77,9 @@ namespace TextRPG.Players
                 Console.WriteLine("플레이어가 피해를 입지 않았습니다.");
             }
 
-            if((state.CurHp - damge) < 0)
+            state.CurHp -= damge;
+
+            if (state.CurHp < 0)
             {
                 Console.WriteLine("플레이어가 죽었습니다.");
             }

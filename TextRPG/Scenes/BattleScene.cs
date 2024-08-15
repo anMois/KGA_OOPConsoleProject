@@ -35,6 +35,11 @@ namespace TextRPG.Scenes
 
         public override void Exit()
         {
+            if (player.State.CurExp == player.MaxExp[player.State.Level]) ;
+            {
+                player.State.Level++;
+                player.State.CurExp = 0;
+            }
         }
 
         public override void Input()
@@ -75,6 +80,12 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
+            //플레이어 체력 확인
+            if(player.State.CurHp < 0)
+            {
+
+            }
+
             //플레이어 턴
             switch (input)
             {
@@ -82,7 +93,7 @@ namespace TextRPG.Scenes
                     Attack(monster);
                     break;
                 case "2":
-                    Defence();
+                    Defence(monster);
                     break;
                 case "3":
                     Run();
@@ -91,25 +102,24 @@ namespace TextRPG.Scenes
                     break;
             }
 
-            //몬스터 턴
-            Random rand = new Random();
-
-            switch (rand.Next(0, 2))
-            {
-                case 0:
-                    Attack(player);
-                    break;
-                case 1:
-                    break;
-            }
-
-            //서로의 턴이 끝난 후
+            //몬스터 체력확인
             if (monster.HP < 0)
             {
+                monster.removeWhenInteract = true;
                 player.Gold += monster.Gold;
                 player.State.CurExp += monster.Exp;
                 game.ReturnScene();
             }
+
+            //몬스터 턴
+            Random rand = new Random();
+
+            int num = rand.Next(0, 100) % 10;
+
+            if(num < 3)
+                Defence(player);
+            else
+                Attack(player);
         }
 
         private void Attack<T>(T obj)
@@ -120,9 +130,12 @@ namespace TextRPG.Scenes
                 player.GetDamage((monster.Atk - player.State.Def) < 0 ? 0 : monster.Atk - player.State.Def);
         }
 
-        private void Defence()
+        private void Defence<T>(T obj)
         {
-
+            if (obj is Player)
+                player.State.Def += 10;
+            else if (obj is Monster)
+                monster.Def += 10;
         }
 
         private void Run()
