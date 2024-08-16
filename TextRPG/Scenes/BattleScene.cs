@@ -102,6 +102,8 @@ namespace TextRPG.Scenes
                         return;
                     else
                         break;
+                default:
+                    return;
             }
 
             //몬스터 체력확인

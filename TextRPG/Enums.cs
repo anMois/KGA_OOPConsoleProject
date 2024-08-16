@@ -10,8 +10,8 @@
         Battle,
         Store,
         Amhurst,
-        SouthPerry,
-        LithHarbor,
+        State,
+        Inventory,
         SIZE
     }
 

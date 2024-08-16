@@ -133,6 +133,7 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
+            base.PlayerView(input);
             Move();
         }
 

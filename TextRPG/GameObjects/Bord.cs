@@ -10,8 +10,6 @@ namespace TextRPG.GameObjects
 {
     public class Bord : GameObject
     {
-        private bool collider;
-
         public Bord(Scene scene) : base(scene)
         {
         }

@@ -20,5 +20,22 @@ namespace TextRPG.Scenes
         public abstract void Input();
         public abstract void Update();
         public abstract void Exit();
+
+        protected void PlayerView(ConsoleKey input)
+        {
+            if(game.CurScene is StreetScene || game.CurScene is VillageScene)
+            {
+                switch (input)
+                {
+                    case ConsoleKey.E:
+                        game.ChangeScene(SceneType.State);
+                        break;
+                    case ConsoleKey.I:
+                        game.ChangeScene(SceneType.State);
+                        break;
+                }
+
+            }
+        }
     }
 }

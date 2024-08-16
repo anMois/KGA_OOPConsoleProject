@@ -22,7 +22,7 @@ namespace TextRPG
         private Player player;
         public Player Player { get { return player; } set { player = value; } }
 
-        private Stack<Scene> map = new Stack<Scene>();
+        public Stack<Scene> map = new Stack<Scene>();
 
         public void Run()
         {
@@ -49,7 +49,7 @@ namespace TextRPG
         public void ReturnScene()
         {
             curScene.Exit();
-            map.Pop();
+            curScene = map.Pop();
             curScene.Enter();
         }
 
@@ -74,8 +74,8 @@ namespace TextRPG
             scenes[(int)SceneType.Battle] = new BattleScene(this);
             scenes[(int)SceneType.Store] = new TitleScene(this);
             scenes[(int)SceneType.Amhurst] = new VillageScene(this);
-            scenes[(int)SceneType.SouthPerry] = new TitleScene(this);
-            scenes[(int)SceneType.LithHarbor] = new TitleScene(this);
+            scenes[(int)SceneType.State] = new StateScene(this);
+            scenes[(int)SceneType.Inventory] = new InventoryScene(this);
 
             curScene = scenes[(int)SceneType.Title];
             curScene.Enter();
