@@ -150,7 +150,13 @@ namespace TextRPG.Scenes
 
         private void SellItem()
         {
-
+            Console.WriteLine("미구현");
+            int.TryParse(base.input, out value);
+            if (value == 0)
+            {
+                curType = StateType.None;
+                return;
+            }
         }
 
     }

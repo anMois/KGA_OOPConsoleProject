@@ -42,6 +42,7 @@ namespace TextRPG.GameObjects.Factorys
                 potion.Description = "둥그런 유리병에 담겨있는 약초로 만든 빨간 물약";
                 potion.Effect = "일정량 체력을 회복한다.";
                 potion.Amount = 5;
+                potion.Price = 20;
                 return potion;
             }
             else if (name == "하얀포션")
@@ -51,6 +52,7 @@ namespace TextRPG.GameObjects.Factorys
                 potion.Description = "둥그런 유리병에 담겨있는 약초로 만든 하얀 물약";
                 potion.Effect = "일정량 체력을 회복한다.";
                 potion.Amount = 10;
+                potion.Price = 50;
                 return potion;
             }
             else
