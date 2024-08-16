@@ -12,8 +12,12 @@ namespace TextRPG.Scenes
     {
         private enum StateType { None, Buy, Sell}
         private StateType curType;
+        
+        private int value;
 
         private List<Item> storeItems;
+        private Item item;
+        public Item Item { get { return item; } }
 
         public StoreScene(Game game) : base(game)
         {
@@ -51,18 +55,6 @@ namespace TextRPG.Scenes
                 PrintStoreMenu();
         }
 
-        private void PrintPlayerItemList()
-        {
-            Console.WriteLine("=======Store=======");
-
-            game.Player.Inventory.ShowInven();
-
-            Console.WriteLine("===================");
-            Console.WriteLine();
-            Console.WriteLine("판매할 아이템 번호 0 - 돌아가기");
-            Console.Write("입력 : ");
-        }
-
         private void PrintStoreItemList()
         {
             Console.WriteLine("=======Store=======");
@@ -71,10 +63,25 @@ namespace TextRPG.Scenes
             {
                 Console.WriteLine($" {i + 1}. {storeItems[i].Name}");
             }
-
+            Console.WriteLine();
+            Console.WriteLine($"보유 중인 골드 : {game.Player.Gold}G");
             Console.WriteLine("===================");
             Console.WriteLine();
             Console.WriteLine("구매할 아이템 번호 0 - 돌아가기");
+            Console.Write("입력 : ");
+        }
+
+        private void PrintPlayerItemList()
+        {
+            Console.WriteLine("=======Store=======");
+
+            game.Player.Inventory.ShowInven();
+
+            Console.WriteLine();
+            Console.WriteLine($"보유 중인 골드 : {game.Player.Gold}G");
+            Console.WriteLine("===================");
+            Console.WriteLine();
+            Console.WriteLine("판매할 아이템 번호 0 - 돌아가기");
             Console.Write("입력 : ");
         }
 
@@ -92,9 +99,9 @@ namespace TextRPG.Scenes
         public override void Update()
         {
             if (curType == StateType.Buy)
-            { }
+                BuyItem();
             else if (curType == StateType.Sell)
-            { }
+                SellItem();
             else
             {
                 switch (base.input)
@@ -113,5 +120,38 @@ namespace TextRPG.Scenes
                 }
             }
         }
+        
+        private void BuyItem()
+        {            
+            int.TryParse(base.input, out value);
+
+            if(value == 0)
+            {
+                curType = StateType.None;
+                return;
+            }
+            else if (value > storeItems.Count)
+                return;
+
+            item = storeItems[value - 1];
+
+            if (game.Player.Gold < item.Price)
+            {
+                Console.WriteLine("골드가 부족합니다.");
+                Console.ReadKey();
+                return;
+            }
+
+            game.Player.Gold -= item.Price;
+            game.Player.Inventory.AddItem(item);
+            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
+            Console.ReadKey();
+        }
+
+        private void SellItem()
+        {
+
+        }
+
     }
 }

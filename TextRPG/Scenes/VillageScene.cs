@@ -43,7 +43,7 @@ namespace TextRPG.Scenes
 
             Place storePotal = new Place(this);
             storePotal.color = ConsoleColor.Cyan;
-            storePotal.simbol = 't';
+            storePotal.simbol = 's';
             storePotal.point = new Point(7, 1);
             storePotal.type = SceneType.Store;
 

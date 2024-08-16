@@ -43,7 +43,7 @@ namespace TextRPG.Players
             curExp = 0;
             maxHp = 10;
             maxMp = 8;
-            curHp = 5;
+            curHp = maxHp;
             curMp = maxMp;
             GetStats();
         }

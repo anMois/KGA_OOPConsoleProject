@@ -30,7 +30,6 @@ namespace TextRPG.GameObjects
         public void AddItem(Item item)
         {
             items.Add(item);
-            Console.WriteLine($"{item.Name}을(를) 얻었습니다.");
         }
 
         public void RemoveItem(Item item)
