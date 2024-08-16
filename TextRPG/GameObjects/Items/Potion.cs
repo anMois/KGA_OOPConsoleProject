@@ -19,6 +19,7 @@ namespace TextRPG.GameObjects.Items
             base.Name = "회복 포션";
             base.Description = "둥그런 유리병에 담겨있는 약초로 만든 물약";
             base.Use = true;
+            base.Price = 10;
             effect = "사용 시 일정의 체력을 회복한다.";
             amount = 3;
         }

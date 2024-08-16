@@ -72,7 +72,7 @@ namespace TextRPG
             scenes[(int)SceneType.Intro] = new IntroScene(this);
             scenes[(int)SceneType.Street] = new StreetScene(this);
             scenes[(int)SceneType.Battle] = new BattleScene(this);
-            scenes[(int)SceneType.Store] = new TitleScene(this);
+            scenes[(int)SceneType.Store] = new StoreScene(this);
             scenes[(int)SceneType.Amhurst] = new VillageScene(this);
             scenes[(int)SceneType.State] = new StateScene(this);
             scenes[(int)SceneType.Inventory] = new InventoryScene(this);

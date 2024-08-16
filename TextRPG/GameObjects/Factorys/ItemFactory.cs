@@ -35,6 +35,24 @@ namespace TextRPG.GameObjects.Factorys
                 Potion healPotion = new Potion();
                 return healPotion;
             }
+            else if (name == "빨간포션")
+            {
+                Potion potion = new Potion();
+                potion.Name = name;
+                potion.Description = "둥그런 유리병에 담겨있는 약초로 만든 빨간 물약";
+                potion.Effect = "일정량 체력을 회복한다.";
+                potion.Amount = 5;
+                return potion;
+            }
+            else if (name == "하얀포션")
+            {
+                Potion potion = new Potion();
+                potion.Name = name;
+                potion.Description = "둥그런 유리병에 담겨있는 약초로 만든 하얀 물약";
+                potion.Effect = "일정량 체력을 회복한다.";
+                potion.Amount = 10;
+                return potion;
+            }
             else
             {
                 Console.WriteLine("해당 이름을 가진 포션이 없습니다.");

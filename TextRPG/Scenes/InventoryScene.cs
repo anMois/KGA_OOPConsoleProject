@@ -4,7 +4,7 @@ namespace TextRPG.Scenes
 {
     public class InventoryScene : Scene
     {
-        public enum StateType { None, Select, Confirm }
+        private enum StateType { None, Select, Confirm }
         private StateType curState;
 
         private int value;

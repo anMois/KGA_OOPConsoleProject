@@ -70,15 +70,13 @@ namespace TextRPG.Players
 
         public void GetDamage(int damge)
         {
-            if (damge > 0)
-            {
-                Console.WriteLine($"플레이어 {damge}의 피해를 입었습니다.");
-            }
-            else
+            if (damge < 0)
             {
                 Console.WriteLine("플레이어가 피해를 입지 않았습니다.");
+                return;
             }
 
+            Console.WriteLine($"플레이어 {damge}의 피해를 입었습니다.");
             state.CurHp -= damge;
 
             if (state.CurHp < 0)

@@ -11,9 +11,11 @@ namespace TextRPG.GameObjects.Items
         private string name;
         private string description;
         private bool use;
+        private int price;
 
         public string Name { get { return name; } set { name = value; } }
         public string Description { get { return description; } set { description = value; } }
         public bool Use { get { return use; } set { use = value; } }
+        public int Price { get { return price; } set { price = value; } }
     }
 }

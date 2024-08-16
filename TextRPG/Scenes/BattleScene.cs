@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TextRPG.GameObjects.Monsters;
+﻿using TextRPG.GameObjects.Monsters;
 using TextRPG.Players;
 
 namespace TextRPG.Scenes
@@ -38,7 +33,7 @@ namespace TextRPG.Scenes
             {
                 player.State.Level++;
                 player.State.CurExp = 0;
-                if(player.State.CurHp != player.State.MaxHp)
+                if (player.State.CurHp != player.State.MaxHp)
                     player.State.CurHp = player.State.MaxHp;
             }
         }
@@ -127,10 +122,28 @@ namespace TextRPG.Scenes
 
         private void Attack<T>(T obj)
         {
+            int playerDamege, monsterDamge;
+
+            if (player.State.Level > monster.Level)
+            {
+                playerDamege = damge - monster.Def;
+                monsterDamge = monster.Atk - player.State.Def - (player.State.Level - monster.Level);
+            }
+            else if (player.State.Level < monster.Level)
+            {
+                playerDamege = damge - monster.Def - (monster.Level - player.State.Level);
+                monsterDamge = monster.Atk - player.State.Def;
+            }
+            else
+            {
+                playerDamege = damge - monster.Def;
+                monsterDamge = monster.Atk - player.State.Def;
+            }
+
             if (obj is Monster)
-                monster.GetDamage((damge - monster.Def) < 0 ? 0 : damge - monster.Def);
+                monster.GetDamage(playerDamege < 0 ? 0 : playerDamege);
             else if (obj is Player)
-                player.GetDamage((monster.Atk - player.State.Def) < 0 ? 0 : monster.Atk - player.State.Def);
+                player.GetDamage(monsterDamge < 0 ? 0 : monsterDamge);
         }
 
         private void Defence<T>(T obj)
@@ -146,7 +159,7 @@ namespace TextRPG.Scenes
             Random rand = new Random();
             int randNum = rand.Next(0, 100) % 10;
 
-            if(randNum < 5)
+            if (randNum < 5)
             {
                 Console.WriteLine("무사히 도망쳤습니다.");
                 Thread.Sleep(750);
