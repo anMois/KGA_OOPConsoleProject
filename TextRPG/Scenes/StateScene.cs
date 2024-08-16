@@ -52,7 +52,7 @@ namespace TextRPG.Scenes
         {
             Console.WriteLine("근력 : '공격는 힘!' 공격력과 관련이 있다.");
             Console.WriteLine("민첩 : '행동이 빨라지겠는걸' 방어력과 관련이 있다.");
-            Console.WriteLine("지력 : '세계의 대한 지식이 늘어나겠어' 마력과 관력이 있다.");
+            Console.WriteLine("지력 : '세계의 대한 지식이 늘어나겠어' 마법력과 관력이 있다.");
             Console.WriteLine("행운 : '몬스터에서 맞을 확률이 낮아 지는거 아니야?' 방어력과 관련이 있다.");
             Console.ReadKey();
         }

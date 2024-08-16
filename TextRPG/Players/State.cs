@@ -13,7 +13,10 @@ namespace TextRPG.Players
         private int curExp;
         private int curHp;
         private int maxHp;
+        private int curMp;
+        private int maxMp;
         private int attack;
+        private int magic;
         private int defense;
         private int strength;
         private int dexterity;
@@ -24,7 +27,10 @@ namespace TextRPG.Players
         public int CurExp { get { return curExp; } set { curExp = value; } }
         public int CurHp { get { return curHp; } set { curHp = value; } }
         public int MaxHp { get { return maxHp; } set { maxHp = value; } }
+        public int CurMp { get { return curMp; } set { curMp = value; } }
+        public int MaxMp { get { return maxMp; } set { maxMp = value; } }
         public int Atk { get { return attack; } set { attack = value; } }
+        public int Mag { get { return magic; } set { magic = value; } }
         public int Def { get { return defense; } set { defense = value; } }
         public int STR { get { return strength; } set { strength = value; } }
         public int DEX { get { return dexterity; } set { dexterity = value; } }
@@ -36,7 +42,9 @@ namespace TextRPG.Players
             level = 1;
             curExp = 0;
             maxHp = 10;
+            maxMp = 10;
             curHp = maxHp;
+            curMp = maxMp;
             GetStats();
         }
 
@@ -50,6 +58,7 @@ namespace TextRPG.Players
             luck = random.Next(4, 13);
 
             attack = strength * 2;
+            magic = intelligence;
             defense = (dexterity + luck) / 2;
         }
     }

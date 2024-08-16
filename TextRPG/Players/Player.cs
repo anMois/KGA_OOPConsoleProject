@@ -55,8 +55,10 @@ namespace TextRPG.Players
             Console.WriteLine("========캐릭터 상태창========");
             Console.WriteLine($"Lv. {state.Level.ToString("D2")} |  {name} | {job}\n");
             Console.WriteLine($"체력 : {state.CurHp,6} | {state.MaxHp}");
+            Console.WriteLine($"마력 : {state.CurMp,6} | {state.MaxMp}");
             Console.WriteLine($"경험치 : {state.CurExp,4} | {maxExp[state.Level - 1]}");
             Console.WriteLine($"공격력 : {state.Atk,4}");
+            Console.WriteLine($"마법력 : {state.Mag,4}");
             Console.WriteLine($"방어력 : {state.Def,4}");
             Console.WriteLine($"소지 골드 : {gold} G");
             Console.WriteLine("\n능력치");
