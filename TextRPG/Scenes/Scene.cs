@@ -31,7 +31,7 @@ namespace TextRPG.Scenes
                         game.ChangeScene(SceneType.State);
                         break;
                     case ConsoleKey.I:
-                        game.ChangeScene(SceneType.State);
+                        game.ChangeScene(SceneType.Inventory);
                         break;
                 }
 

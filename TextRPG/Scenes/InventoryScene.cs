@@ -26,6 +26,7 @@ namespace TextRPG.Scenes
 
         public override void Render()
         {
+            Console.Clear();
         }
 
         public override void Update()
