@@ -10,6 +10,8 @@ namespace TextRPG.Scenes
     {
         public Game game;
 
+        protected string input;
+
         public Scene(Game game)
         {
             this.game = game;
@@ -34,7 +36,6 @@ namespace TextRPG.Scenes
                         game.ChangeScene(SceneType.Inventory);
                         break;
                 }
-
             }
         }
     }

@@ -8,7 +8,6 @@ namespace TextRPG.Scenes
 {
     public class StateScene : Scene
     {
-        private string input;
         public StateScene(Game game) : base(game)
         {
         }
@@ -23,7 +22,7 @@ namespace TextRPG.Scenes
 
         public override void Input()
         {
-            input = Console.ReadLine();
+            base.input = Console.ReadLine();
         }
 
         public override void Render()
@@ -43,7 +42,7 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
-            switch(input)
+            switch(base.input)
             {
                 case "1":
                     StatDescription();

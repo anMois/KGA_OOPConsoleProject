@@ -13,7 +13,6 @@ namespace TextRPG.Scenes
         private Player player;
         private Monster monster;
 
-        private string input;
         private int damge;
 
         public BattleScene(Game game) : base(game)
@@ -46,7 +45,7 @@ namespace TextRPG.Scenes
 
         public override void Input()
         {
-            input = Console.ReadLine();
+            base.input = Console.ReadLine();
         }
 
         public override void Render()
@@ -89,7 +88,7 @@ namespace TextRPG.Scenes
             }
 
             //플레이어 턴
-            switch (input)
+            switch (base.input)
             {
                 case "1":
                     Attack(monster);

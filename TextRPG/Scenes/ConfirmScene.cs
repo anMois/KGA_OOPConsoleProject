@@ -8,8 +8,6 @@ namespace TextRPG.Scenes
 {
     public class ConfirmScene : Scene
     {
-        private string input;
-
         public ConfirmScene(Game game) : base(game)
         {
         }
@@ -38,12 +36,12 @@ namespace TextRPG.Scenes
 
         public override void Input()
         {
-            input = Console.ReadLine();
+            base.input = Console.ReadLine();
         }
 
         public override void Update()
         {
-            switch (input)
+            switch (base.input)
             {
                 case "y":
                 case "Y":

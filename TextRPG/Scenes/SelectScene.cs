@@ -4,8 +4,6 @@ namespace TextRPG.Scenes
 {
     public class SelectScene : Scene
     {
-        private string input;
-
         public SelectScene(Game game) : base(game)
         {
         }
@@ -20,7 +18,7 @@ namespace TextRPG.Scenes
 
         public override void Input()
         {
-            input = Console.ReadLine();
+            base.input = Console.ReadLine();
         }
 
         public override void Render()
@@ -31,7 +29,7 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
-            if (input == string.Empty)
+            if (base.input == string.Empty)
                 return;
 
             game.Player = new Player(input);

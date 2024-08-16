@@ -9,12 +9,17 @@ namespace TextRPG.GameObjects
 {
     public class Inventory
     {
-
         private List<Item> items;
 
         public Inventory()
         {
             items = new List<Item>();
+        }
+
+        public Item GetItem(int index)
+        {
+            Item item = items[index];
+            return item;
         }
 
         public void AddItem(Item item)
