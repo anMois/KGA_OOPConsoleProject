@@ -135,6 +135,7 @@ namespace TextRPG.Scenes
         {
             base.PlayerView(input);
             Move();
+            Interaction();
         }
 
         private void Move()
@@ -164,6 +165,19 @@ namespace TextRPG.Scenes
             if (map[next.Y, next.X] == ' ' || map[next.Y, next.X] == 'h')
             {
                 playerPos = next;
+            }
+        }
+
+        private void Interaction()
+        {
+            foreach (GameObject obj in gameObjects)
+            {
+                if (playerPos.X == obj.point.X && playerPos.Y == obj.point.Y)
+                {
+                    obj.Interaction(game.Player);
+
+                    return;
+                }
             }
         }
     }
