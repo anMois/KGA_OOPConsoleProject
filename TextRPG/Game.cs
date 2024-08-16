@@ -16,14 +16,13 @@ namespace TextRPG
 
         private Scene[] scenes = new Scene[(int)SceneType.SIZE];
         private Scene curScene;
-        private Scene prevScene;
 
         public Scene CurScene { get { return curScene; } }
 
         private Player player;
         public Player Player { get { return player; } set { player = value; } }
 
-        Stack<Scene> aaa = new Stack<Scene>();
+        private Stack<Scene> map = new Stack<Scene>();
 
         public void Run()
         {
@@ -41,6 +40,7 @@ namespace TextRPG
 
         public void ChangeScene(SceneType scene)
         {
+            map.Push(curScene);
             curScene.Exit();
             curScene = scenes[(int)scene];
             curScene.Enter();
@@ -49,13 +49,13 @@ namespace TextRPG
         public void ReturnScene()
         {
             curScene.Exit();
-            curScene = prevScene;
+            map.Pop();
             curScene.Enter();
         }
 
         public void StartBattle(Monster monster)
         {
-            prevScene = curScene;
+            map.Push(curScene);
             curScene.Exit();
             curScene = scenes[(int)SceneType.Battle];
             ((BattleScene)curScene).SetBattle(player, monster);

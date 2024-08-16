@@ -35,10 +35,12 @@ namespace TextRPG.Scenes
 
         public override void Exit()
         {
-            if (player.State.CurExp == player.MaxExp[player.State.Level]) ;
+            if (player.State.CurExp == player.MaxExp[player.State.Level - 1])
             {
                 player.State.Level++;
                 player.State.CurExp = 0;
+                if(player.State.CurHp != player.State.MaxHp)
+                    player.State.CurHp = player.State.MaxHp;
             }
         }
 
@@ -80,12 +82,6 @@ namespace TextRPG.Scenes
 
         public override void Update()
         {
-            PlayerTurn();
-            MonsterTurn();
-        }
-
-        private void PlayerTurn()
-        {
             //플레이어 체력 확인
             if (player.State.CurHp < 0)
             {
@@ -102,13 +98,12 @@ namespace TextRPG.Scenes
                     Defence(monster);
                     break;
                 case "3":
-                    Run();
-                    return;
+                    if (Run())
+                        return;
+                    else
+                        break;
             }
-        }
 
-        private void MonsterTurn()
-        {
             //몬스터 체력확인
             if (monster.HP < 0)
             {
@@ -145,7 +140,7 @@ namespace TextRPG.Scenes
                 monster.Def += 10;
         }
 
-        private void Run()
+        private bool Run()
         {
             Random rand = new Random();
             int randNum = rand.Next(0, 100) % 10;
@@ -156,12 +151,13 @@ namespace TextRPG.Scenes
                 Thread.Sleep(750);
 
                 game.ReturnScene();
-                return;
+                return true;
             }
             else
             {
                 Console.WriteLine("도망치기에 몬스터에게 잡혔습니다.");
                 Thread.Sleep(750);
+                return false;
             }
         }
     }
