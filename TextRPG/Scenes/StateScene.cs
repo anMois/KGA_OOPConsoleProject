@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TextRPG.Interfaces;
 
 namespace TextRPG.Scenes
 {
@@ -29,15 +30,7 @@ namespace TextRPG.Scenes
         {
             Console.Clear();
             game.Player.ShowInfo();
-            NextPlay();
-        }
-
-        private void NextPlay()
-        {
-            Console.WriteLine();
-            Console.WriteLine("다음 할 행동은 무엇입니까?");
-            Console.WriteLine("1. 능력치 설명 2. 돌아가기");
-            Console.Write("입력 : ");
+            base.NextPlay("능력치 설명");
         }
 
         public override void Update()

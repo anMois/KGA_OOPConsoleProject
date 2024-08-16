@@ -16,6 +16,11 @@ namespace TextRPG.GameObjects
             items = new List<Item>();
         }
 
+        public int GetItemCount()
+        {
+            return items.Count;
+        }
+
         public Item GetItem(int index)
         {
             Item item = items[index];

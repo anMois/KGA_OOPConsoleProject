@@ -38,5 +38,13 @@ namespace TextRPG.Scenes
                 }
             }
         }
+
+        protected void NextPlay(string msg)
+        {
+            Console.WriteLine();
+            Console.WriteLine("다음 할 행동은 무엇입니까?");
+            Console.WriteLine($"1. {msg} 2. 돌아가기");
+            Console.Write("입력 : ");
+        }
     }
 }

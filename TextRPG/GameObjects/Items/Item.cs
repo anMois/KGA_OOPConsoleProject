@@ -10,8 +10,10 @@ namespace TextRPG.GameObjects.Items
     {
         private string name;
         private string description;
+        private bool use;
 
         public string Name { get { return name; } set { name = value; } }
         public string Description { get { return description; } set { description = value; } }
+        public bool Use { get { return use; } set { use = value; } }
     }
 }

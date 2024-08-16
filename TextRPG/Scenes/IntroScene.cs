@@ -21,8 +21,10 @@ namespace TextRPG.Scenes
         public override void Exit()
         {
             Item sword = ItemFactory.WeaponCreate("검");
+            Item potion = ItemFactory.PotionCreate("");
             game.Player.Weapon = (Weapon)sword;
             game.Player.Inventory.AddItem(sword);
+            game.Player.Inventory.AddItem(potion);
         }
 
         public override void Input()
