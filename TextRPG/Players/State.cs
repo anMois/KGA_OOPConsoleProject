@@ -42,8 +42,8 @@ namespace TextRPG.Players
             level = 1;
             curExp = 0;
             maxHp = 10;
-            maxMp = 10;
-            curHp = maxHp;
+            maxMp = 8;
+            curHp = 5;
             curMp = maxMp;
             GetStats();
         }

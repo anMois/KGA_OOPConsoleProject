@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-using TextRPG.GameObjects.Items;
+﻿using TextRPG.GameObjects.Items;
 
 namespace TextRPG.Scenes
 {
     public class InventoryScene : Scene
     {
-        public enum StateType { None, Select, Confirm}
+        public enum StateType { None, Select, Confirm }
         private StateType curState;
 
         private int value;
@@ -82,7 +76,7 @@ namespace TextRPG.Scenes
 
                 curState = StateType.Confirm;
             }
-            else if(curState == StateType.Confirm)
+            else if (curState == StateType.Confirm)
             {
                 switch (base.input)
                 {
@@ -135,12 +129,38 @@ namespace TextRPG.Scenes
                 Console.WriteLine($"아이템 이름 : {item.Name}");
                 Console.WriteLine($"아이템 설명 : {item.Description}");
             }
-            Console.ReadKey();   
+            Console.ReadKey();
         }
 
         private void ItemUse()
         {
+            if (!item.Use)
+            {
+                Console.WriteLine("사용 불가 아이템입니다.");
+                Console.ReadKey();
+                return;
+            }
 
+            if (item is Potion)
+            {
+                if (game.Player.State.CurHp == game.Player.State.MaxHp)
+                {
+                    Console.WriteLine("체력이 최대치입니다.");
+                    Console.ReadKey();
+                    return;
+                }
+
+                game.Player.State.CurHp += ((Potion)item).Amount;
+                Console.WriteLine($"{((Potion)item).Amount} 회복했습니다.");
+
+                if (game.Player.State.CurHp > game.Player.State.MaxHp)
+                    game.Player.State.CurHp = game.Player.State.MaxHp;
+
+                game.Player.Inventory.RemoveItem(item);
+                curState = StateType.Select;
+            }
+
+            Console.ReadKey();
         }
     }
 }
