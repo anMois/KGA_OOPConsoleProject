@@ -57,6 +57,7 @@ namespace TextRPG.GameObjects
                 for (int i = 0; i < items.Count; i++)
                 {
                     Console.WriteLine($"{i + 1}. {items[i].Name}");
+                    Console.WriteLine($"     판매 가격 : {items[i].Price} G");
                 }
             }
             Console.WriteLine("===================");

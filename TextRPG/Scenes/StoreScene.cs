@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using TextRPG.GameObjects.Factorys;
@@ -73,13 +74,10 @@ namespace TextRPG.Scenes
 
         private void PrintPlayerItemList()
         {
-            Console.WriteLine("=======Store=======");
-
             game.Player.Inventory.ShowInven();
 
             Console.WriteLine();
             Console.WriteLine($"보유 중인 골드 : {game.Player.Gold}G");
-            Console.WriteLine("===================");
             Console.WriteLine();
             Console.WriteLine("판매할 아이템 번호 0 - 돌아가기");
             Console.Write("입력 : ");
@@ -138,26 +136,44 @@ namespace TextRPG.Scenes
             if (game.Player.Gold < item.Price)
             {
                 Console.WriteLine("골드가 부족합니다.");
-                Console.ReadKey();
+                Thread.Sleep(750);
                 return;
             }
-
-            game.Player.Gold -= item.Price;
-            game.Player.Inventory.AddItem(item);
-            Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
-            Console.ReadKey();
+            else
+            {
+                game.Player.Gold -= item.Price;
+                game.Player.Inventory.AddItem(item);
+                Console.WriteLine($"{item.Name}을(를) 구매했습니다.");
+                Thread.Sleep(750);
+            }
         }
 
         private void SellItem()
         {
-            Console.WriteLine("미구현");
             int.TryParse(base.input, out value);
             if (value == 0)
             {
                 curType = StateType.None;
                 return;
             }
-        }
+            else if (value > game.Player.Inventory.GetItemCount())
+                return;
 
+            item = game.Player.Inventory.GetItem(value - 1);
+
+            if(item == game.Player.Weapon)
+            {
+                Console.WriteLine("해당 무기는 착용중입니다.");
+                Thread.Sleep(750);
+                return;
+            }
+            else
+            {
+                game.Player.Gold += item.Price;
+                game.Player.Inventory.RemoveItem(item);
+                Console.WriteLine($"{item.Name}을(를) 팔아서 {item.Price} Gold를 획득했습니다.");
+                Thread.Sleep(750);
+            }
+        }
     }
 }

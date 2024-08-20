@@ -1,5 +1,6 @@
 ﻿using TextRPG.GameObjects;
 using TextRPG.GameObjects.Items;
+using TextRPG.GameObjects.Monsters;
 using TextRPG.Interfaces;
 
 namespace TextRPG.Players

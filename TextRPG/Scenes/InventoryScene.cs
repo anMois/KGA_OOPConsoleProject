@@ -137,7 +137,7 @@ namespace TextRPG.Scenes
             if (!item.Use)
             {
                 Console.WriteLine("사용 불가 아이템입니다.");
-                Console.ReadKey();
+                Thread.Sleep(750);
                 return;
             }
 
@@ -146,7 +146,7 @@ namespace TextRPG.Scenes
                 if (game.Player.State.CurHp == game.Player.State.MaxHp)
                 {
                     Console.WriteLine("체력이 최대치입니다.");
-                    Console.ReadKey();
+                    Thread.Sleep(750);
                     return;
                 }
 
@@ -160,7 +160,7 @@ namespace TextRPG.Scenes
                 curState = StateType.Select;
             }
 
-            Console.ReadKey();
+            Thread.Sleep(750);
         }
     }
 }
